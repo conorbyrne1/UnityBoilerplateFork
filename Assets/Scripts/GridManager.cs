@@ -26,6 +26,11 @@ public class GridManager : MonoBehaviour
     {
         MakeGrid();
 
+        grid[9,9].spaceType = spaceType.Goal;
+        grid[9,9].UpdateSpaceTypeDisplay();
+        grid[5,5].spaceType = spaceType.Wall;
+        grid[5,5].UpdateSpaceTypeDisplay();
+
     }
 
 
