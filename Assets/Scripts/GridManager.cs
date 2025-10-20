@@ -47,6 +47,11 @@ public class GridManager : MonoBehaviour
 
     }
 
+    public spaceType GetCellState(int x, int y)
+    {
+        return grid[x, y].spaceType;
+    }
+
     public Vector3 GetWorldPosition(float x, float y)
     {
         return new Vector3(x * cellWidth - ((float)width /2), 0, y * cellHeight - ((float)height / 2));
