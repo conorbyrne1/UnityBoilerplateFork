@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -57,5 +58,15 @@ public class GridObject : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            spaceType = (GridManager.spaceType)(((int)spaceType + 1) % Enum.GetNames(typeof(GridManager.spaceType)).Length);
+            UpdateSpaceTypeDisplay();
+
+        }
     }
 }

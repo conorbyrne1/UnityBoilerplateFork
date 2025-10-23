@@ -360,5 +360,9 @@ PrefabInstance:
       propertyPath: gridObject
       value: 
       objectReference: {fileID: 6957698855822333395, guid: c9657c15f71e71044a904f3cd797ec86, type: 3}
+    - target: {fileID: 5579970379776455307, guid: e6662ad06f6b49e46b05926cc1b1f154, type: 3}
+      propertyPath: agentPrefab
+      value: 
+      objectReference: {fileID: 2856959967686252669, guid: 5ae355d2b4649674388e8baa6d2ccc64, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6662ad06f6b49e46b05926cc1b1f154, type: 3}

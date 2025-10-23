@@ -19,6 +19,9 @@ public class GridManager : MonoBehaviour
     public float cellHeight = 1f;
 
     public GameObject gridObject;
+    public GameObject agentPrefab;
+
+    public Agent agent;
 
     GridObject[,] grid;
 
@@ -31,6 +34,7 @@ public class GridManager : MonoBehaviour
         grid[5,5].spaceType = spaceType.Wall;
         grid[5,5].UpdateSpaceTypeDisplay();
 
+        CreateAgent(2, 3);
     }
 
 
@@ -63,6 +67,14 @@ public class GridManager : MonoBehaviour
     }
 
     // Update is called once per frame
+
+    void CreateAgent(int x, int y)
+    {
+        agent = Instantiate(agentPrefab, gameObject.transform).GetComponent<Agent>();
+        agent.x = x;
+        agent.y = y;
+        agent.GridInit();
+    }
     void Update()
     {
         

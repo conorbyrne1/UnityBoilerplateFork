@@ -92,8 +92,8 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4072358463794547937}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
+  m_IsTrigger: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -139,6 +139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1338331860361585269}
   - component: {fileID: 4519569439309997934}
+  - component: {fileID: 1800305026782064756}
   m_Layer: 0
   m_Name: GridObject
   m_TagString: Untagged
@@ -183,3 +184,16 @@ MonoBehaviour:
   goalMaterial: {fileID: 2100000, guid: 4a4ebeed94dd9f24787e7aa94fdae0aa, type: 2}
   roughMaterial: {fileID: 2100000, guid: cf5d78fb0f8514a4b9d95e83e4b27284, type: 2}
   wallMaterial: {fileID: 2100000, guid: 0861b97ed6866324dbf3acc4aa00c107, type: 2}
+--- !u!65 &1800305026782064756
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6957698855822333395}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9, y: 0.25, z: 0.9}
+  m_Center: {x: 0, y: 0, z: 0}
