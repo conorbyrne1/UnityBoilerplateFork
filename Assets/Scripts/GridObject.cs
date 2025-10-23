@@ -15,7 +15,7 @@ public class GridObject : MonoBehaviour
     public Renderer cubeMesh;
 
     public Material emptyMaterial;
-    public Material goalMaterial;
+    //public Material goalMaterial;
     public Material roughMaterial;
     public Material wallMaterial;
 
@@ -26,7 +26,7 @@ public class GridObject : MonoBehaviour
         spaceTypeMaterials = new Dictionary<GridManager.spaceType, Material>()
         {
             {GridManager.spaceType.Empty, emptyMaterial },
-            {GridManager.spaceType.Goal, goalMaterial },
+            //{GridManager.spaceType.Goal, goalMaterial },
             {GridManager.spaceType.Rough, roughMaterial },
             {GridManager.spaceType.Wall, wallMaterial },
         };

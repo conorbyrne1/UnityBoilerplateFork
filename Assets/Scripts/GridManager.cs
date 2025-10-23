@@ -10,8 +10,8 @@ public class GridManager : MonoBehaviour
     {
         Empty,
         Rough,
-        Wall,
-        Goal
+        Wall
+        //Goal
     }
     public int width = 10;
     public int height = 10;
@@ -19,9 +19,11 @@ public class GridManager : MonoBehaviour
     public float cellHeight = 1f;
 
     public GameObject gridObject;
+    public GameObject goalPrefab;
     public GameObject agentPrefab;
 
     public Agent agent;
+    public GoalObject goal;
 
     GridObject[,] grid;
 
@@ -29,8 +31,9 @@ public class GridManager : MonoBehaviour
     {
         MakeGrid();
 
-        grid[9,9].spaceType = spaceType.Goal;
-        grid[9,9].UpdateSpaceTypeDisplay();
+        //grid[9,9].spaceType = spaceType.Goal;
+        //grid[9,9].UpdateSpaceTypeDisplay();
+        CreateGoal(9, 9);
         grid[5,5].spaceType = spaceType.Wall;
         grid[5,5].UpdateSpaceTypeDisplay();
 
@@ -74,6 +77,13 @@ public class GridManager : MonoBehaviour
         agent.x = x;
         agent.y = y;
         agent.GridInit();
+    }
+    void CreateGoal(int x, int y)
+    {
+        goal = Instantiate(goalPrefab, gameObject.transform).GetComponent<GoalObject>();
+        goal.x = x;
+        goal.y = y;
+        goal.GridInit();
     }
     void Update()
     {
