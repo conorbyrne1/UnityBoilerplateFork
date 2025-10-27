@@ -84,14 +84,16 @@ public class Agent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         // Press Space to calculate and follow path
-        if (Input.GetKeyDown(KeyCode.Space) && !isMoving)
-        {
-            CalculatePath();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))// && !isMoving)
+        //{
+        //    CalculatePath();
+        //}
+        CalculatePath();
 
         // Press M to move along the path
-        if (Input.GetKeyDown(KeyCode.M) && currentPath != null && currentPath.Count > 0 && !isMoving)
+        if (Input.GetKeyDown(KeyCode.M) && currentPath != null && currentPath.Count > 0)// && !isMoving)
         {
             StartCoroutine(MoveAlongPath());
         }
@@ -355,14 +357,43 @@ public class Agent : MonoBehaviour
 
     private IEnumerator MoveAlongPath()
     {
+        //if (currentPath == null || currentPath.Count == 0)
+        //    yield break;
+
+        //isMoving = true;
+
+        //for (int i = 0; i < currentPath.Count; i++)
+        //{
+        //    Vector2Int targetPos = currentPath[i];
+        //    Vector3 targetWorldPos = gridManager.GetWorldPosition(targetPos.x, targetPos.y);
+
+        //    // Move to target position
+        //    while (Vector3.Distance(transform.position, targetWorldPos) > 0.01f)
+        //    {
+        //        transform.position = Vector3.MoveTowards(transform.position, targetWorldPos, moveSpeed * Time.deltaTime);
+        //        yield return null;
+        //    }
+
+        //    // Update agent grid position
+        //    x = targetPos.x;
+        //    y = targetPos.y;
+        //}
+
+        //isMoving = false;
+        //Debug.Log("Agent reached goal!");
+
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // CODE HERE IS FIXED FROM THE ARCHIVES
         if (currentPath == null || currentPath.Count == 0)
             yield break;
 
         isMoving = true;
 
-        for (int i = 0; i < currentPath.Count; i++)
+        while (currentPath != null && currentPath.Count > 1) // Need at least 2 positions (current + next)
         {
-            Vector2Int targetPos = currentPath[i];
+            // Move to the NEXT position (index 1), not current position (index 0)
+            Vector2Int targetPos = currentPath[1];
+
             Vector3 targetWorldPos = gridManager.GetWorldPosition(targetPos.x, targetPos.y);
 
             // Move to target position
@@ -375,10 +406,20 @@ public class Agent : MonoBehaviour
             // Update agent grid position
             x = targetPos.x;
             y = targetPos.y;
+
+            // Check if we've reached the goal
+            if (x == gridManager.goal.x && y == gridManager.goal.y)
+            {
+                Debug.Log("Agent reached goal!");
+                break;
+            }
+
+            // Wait a frame for CalculatePath() to update the path from new position
+            yield return null;
         }
 
         isMoving = false;
-        Debug.Log("Agent reached goal!");
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     }
 
     /* D* Psuedo code taken from wikipedia: https://en.wikipedia.org/wiki/D*
