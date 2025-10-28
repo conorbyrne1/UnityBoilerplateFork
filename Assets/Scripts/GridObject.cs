@@ -62,6 +62,13 @@ public class GridObject : MonoBehaviour
 
     private void OnMouseOver()
     {
+        if (Input.GetMouseButton(0))
+        {
+            spaceType = GridManager.spaceType.Empty;
+            UpdateSpaceTypeDisplay();
+            gridManager.goal.x = x; gridManager.goal.y = y;
+            gridManager.goal.GridInit();
+        }
         if (Input.GetMouseButtonDown(1))
         {
             spaceType = (GridManager.spaceType)(((int)spaceType + 1) % Enum.GetNames(typeof(GridManager.spaceType)).Length);

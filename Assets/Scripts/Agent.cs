@@ -93,7 +93,15 @@ public class Agent : MonoBehaviour
         CalculatePath();
 
         // Press M to move along the path
-        if (Input.GetKeyDown(KeyCode.M) && currentPath != null && currentPath.Count > 0)// && !isMoving)
+        if (Input.GetKeyDown(KeyCode.M))// && !isMoving)
+        {
+            TryStartMovement();
+        }
+    }
+
+    public void TryStartMovement()
+    {
+        if (currentPath != null && currentPath.Count > 0)// && !isMoving)
         {
             StartCoroutine(MoveAlongPath());
         }
