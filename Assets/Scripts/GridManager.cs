@@ -13,8 +13,8 @@ public class GridManager : MonoBehaviour
         Wall
         //Goal
     }
-    public int width = 10;
-    public int height = 10;
+    public int width = PersistentData.GridSize;
+    public int height = PersistentData.GridSize;
     public float cellWidth = 1f;
     public float cellHeight = 1f;
 
@@ -29,13 +29,15 @@ public class GridManager : MonoBehaviour
 
     void Start()
     {
+        width = PersistentData.GridSize;
+        height = PersistentData.GridSize;
         MakeGrid();
 
         //grid[9,9].spaceType = spaceType.Goal;
         //grid[9,9].UpdateSpaceTypeDisplay();
-        CreateGoal(9, 9);
-        grid[5,5].spaceType = spaceType.Wall;
-        grid[5,5].UpdateSpaceTypeDisplay();
+        CreateGoal(PersistentData.GridSize-1, PersistentData.GridSize-1);
+        grid[4,4].spaceType = spaceType.Wall;
+        grid[4,4].UpdateSpaceTypeDisplay();
 
         CreateAgent(2, 3);
     }
