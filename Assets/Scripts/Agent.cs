@@ -130,7 +130,7 @@ public class Agent : MonoBehaviour
                 nodes[i, j] = new Node(i, j);
             }
         }
-
+        
         openList = new List<Node>();
 
         goalNode = nodes[gridManager.goal.x, gridManager.goal.y];
@@ -326,7 +326,7 @@ public class Agent : MonoBehaviour
             currentPath.Add(new Vector2Int(current.x, current.y));
             current = current.backPointer;
 
-            if (currentPath.Count > gridManager.width * gridManager.height)
+            if (currentPath.Count > gridManager.width * gridManager.height || current.h == float.MaxValue)
             {
                 Debug.LogError("Path extraction failed - possible cycle detected");
                 currentPath.Clear();
